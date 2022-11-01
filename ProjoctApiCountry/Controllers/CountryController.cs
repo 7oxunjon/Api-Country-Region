@@ -22,12 +22,7 @@ namespace ProjoctApiCountry.Controllers
         {
             this.servase = servase ?? throw new ArgumentNullException(nameof(servase));
         }
-
-
-
         [HttpPost]
-        [Route("Insert")]
-
         public async Task<IActionResult> Insert([FromBody] CountryDTO countryDTO)
         {
             return Ok(await servase.Insert(countryDTO));
@@ -41,7 +36,7 @@ namespace ProjoctApiCountry.Controllers
 
         [HttpPut("{id}")]
 
-        public async Task<IActionResult>Update(int id, CountryDTO country)
+        public async Task<IActionResult>Update(int id, [FromBody] CountryDTO country)
         {
             return Ok(await servase.Update(id, country));
         }

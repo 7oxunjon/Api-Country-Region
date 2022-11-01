@@ -29,33 +29,33 @@ namespace ProjoctApiCountry.Server
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<Country> GetId(int id)
+        public async Task<Countrys> GetId(int id)
         {
             return await repostory.GetId(id);
         }
 
-        public async Task<IEnumerable<Country>> GetAll()
+        public async Task<IEnumerable<Countrys>> GetAll()
         {
             return await repostory.GetAll();
         }
 
         public async Task<CountryDTO> Insert(CountryDTO countryDTO)
         {
-            var country = mapper.Map<Country>(countryDTO);
+            var country = mapper.Map<Countrys>(countryDTO);
             return (mapper.Map<CountryDTO>(await repostory.Add(country)));
         }
 
         public async Task<CountryDTO> Update(int id, CountryDTO countryDTO)
         {
-            Country coun = mapper.Map<Country>(countryDTO);
+            Countrys coun = mapper.Map<Countrys>(countryDTO);
             coun.Id = id;
             return (mapper.Map<CountryDTO>(await repostory.Update(id, coun)));
         }
 
-        public async Task<Country> Delete(int id)
+        public async Task<Countrys> Delete(int id)
         {
             var count = await repostory.GetId(id);
-            return (mapper.Map<Country>(await repostory.Delete(id)));
+            return (mapper.Map<Countrys>(await repostory.Delete(id)));
         }
     }
 }

@@ -38,5 +38,18 @@ namespace ProjoctApiCountry.Controllers
         {
             return Ok(await regions.Update(id, regionDTO)); 
         }
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult>Delete(int id)
+        {
+            return Ok(await regions.Delete(id));
+        }
+        
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetID(int id)
+        {
+            return Ok(await regions.Get(id));
+        }
     }
 }

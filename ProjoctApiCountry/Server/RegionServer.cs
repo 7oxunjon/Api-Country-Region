@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ProjoctApiCountry.Controllers;
 using ProjoctApiCountry.DTO;
-using ProjoctApiCountry.Model;
+using ProjoctApiCountry.Model.Mod;
 using ProjoctApiCountry.Repostory.IRepostory;
 using ProjoctApiCountry.Server;
 
@@ -20,14 +20,15 @@ namespace ProjoctApiCountry.Server
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public Task<IEnumerable<Region>> GetAll()
+
+        public Task<IEnumerable<Regions>> GetAll()
         {
             return regions.GetAll();
         }
 
         public async Task<RegionDTO> Inter(RegionDTO regionDTO)
         {
-            var region=mapper.Map<Region>(regionDTO);
+            var region=mapper.Map<Regions>(regionDTO);
             return(mapper.Map<RegionDTO>(await regions.Add(region)));
             
             
@@ -35,9 +36,19 @@ namespace ProjoctApiCountry.Server
 
         public async Task<RegionDTO> Update(int id, RegionDTO regionDTO)
         {
-            Region region1 = mapper.Map<Region>(regionDTO);
+            Regions region1 = mapper.Map<Regions>(regionDTO);
             region1.Id = id;
             return (mapper.Map<RegionDTO>(await regions.Update(id,region1)));
+        }
+        public async Task<Regions> Delete(int id)
+        {
+            var con = await regions.Get(id);
+            return (mapper.Map<Regions>(await regions.Delete(id)));
+        }
+
+        public async Task<Regions> Get(int id)
+        {
+            return await regions.Get(id);   
         }
     }
 }

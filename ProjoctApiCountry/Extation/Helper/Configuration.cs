@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProjoctApiCountry.DTO;
 using ProjoctApiCountry.Model;
+using ProjoctApiCountry.Model.Mod;
 
 namespace ProjoctApiCountry.Helper
 {
@@ -8,8 +9,8 @@ namespace ProjoctApiCountry.Helper
     {
         public Configuration()
         {
-            CreateMap<Country, CountryDTO>().ReverseMap();
-            CreateMap<Region, RegionDTO>().ReverseMap();
+            CreateMap<Countrys, CountryDTO>().ReverseMap();
+            CreateMap<Regions, RegionDTO>().ReverseMap();
         }
 
         

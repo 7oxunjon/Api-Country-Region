@@ -1,11 +1,13 @@
-﻿using ProjoctApiCountry.Model;
+﻿using ProjoctApiCountry.Model.Mod;
 
 namespace ProjoctApiCountry.Repostory.IRepostory
 {
     public interface IRegionRepostory
     {
-        Task<Region> Add(Region region);
-        Task<IEnumerable<Region>> GetAll();
-        Task<Region>Update(int id, Region region);
+        Task<Regions> Add(Regions region);
+        Task<IEnumerable<Regions>> GetAll();
+        Task<Regions>Update(int id, Regions region);
+        Task<Regions> Delete(int id);
+        Task<Regions> Get(int id);
     }
-}
+ }

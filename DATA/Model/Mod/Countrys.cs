@@ -1,6 +1,8 @@
-﻿namespace ProjoctApiCountry.Model
+﻿using ProjoctApiCountry.Model.Mod;
+
+namespace ProjoctApiCountry.Model
 {
-    public class Country
+    public class Countrys
     {
         public int Id { get; set; }
 
@@ -10,6 +12,6 @@
 
         public string Code { get; set; }
 
-        public virtual List<Region> Regions { get; set; }
+        public virtual List<Regions> Regions { get; set; }
     }
 }

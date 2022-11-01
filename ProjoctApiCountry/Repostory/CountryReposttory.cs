@@ -15,19 +15,19 @@ namespace ProjoctApiCountry.Repostory
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public async Task<Country> Add(Country country)
+        public async Task<Countrys> Add(Countrys country)
         {
             await dbContext.countries.AddAsync(country);
             await dbContext.SaveChangesAsync();
             return country;
         }
 
-        public async Task<IEnumerable<Country>> GetAll()
+        public async Task<IEnumerable<Countrys>> GetAll()
         {
-            return await dbContext.countries.ToListAsync();
+            return await dbContext.countries.Include(p => p.Regions).ToListAsync();
         }
 
-        public async Task<Country> Update(int id, Country country)
+        public async Task<Countrys> Update(int id, Countrys country)
         {
             var coun = await dbContext.countries.FindAsync(id);
             if (coun == null) await dbContext.countries.AddAsync(country);
@@ -36,7 +36,7 @@ namespace ProjoctApiCountry.Repostory
             return country;
 
         }
-        public async Task<Country> Delete(int id)
+        public async Task<Countrys> Delete(int id)
         {
            var res = await dbContext.countries.FirstOrDefaultAsync(x => x.Id == id);
             if(res != null)
@@ -48,7 +48,7 @@ namespace ProjoctApiCountry.Repostory
             return null;
         }
 
-        public async Task<Country> GetId(int id)
+        public async Task<Countrys> GetId(int id)
         {
             return await dbContext.countries.FirstAsync(c => c.Id == id);
             

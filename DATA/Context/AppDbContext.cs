@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjoctApiCountry.Model;
+using ProjoctApiCountry.Model.Mod;
 
 namespace ProjoctApiCountry.Context
 {
@@ -8,13 +9,13 @@ namespace ProjoctApiCountry.Context
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
         
-        public DbSet<Country> countries { get; set; }
+        public DbSet<Countrys> countries { get; set; }
         
-        public DbSet<Region> regions { get; set; }
+        public DbSet<Regions> regions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Region>().
+            builder.Entity<Regions>().
                 HasOne(p => p.Country).
                 WithMany(p => p.Regions).
                 HasForeignKey(p => p.CountryId);

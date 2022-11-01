@@ -7,13 +7,13 @@ namespace ProjoctApiCountry.Server
     {
         Task<CountryDTO> Insert(CountryDTO country);
         
-        Task<IEnumerable<Country>> GetAll();
+        Task<IEnumerable<Countrys>> GetAll();
         
         Task<CountryDTO> Update( int id, CountryDTO country);
 
-        Task<Country> Delete(int id);
+        Task<Countrys> Delete(int id);
 
-        Task<Country> GetId(int id);
+        Task<Countrys> GetId(int id);
 
 
 
